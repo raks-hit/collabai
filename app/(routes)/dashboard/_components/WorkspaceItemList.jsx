@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '@/config/firebaseConfig'
-import WorkspaceOptions from './WorkspaceOptions'
+import WorkspaceOptions from "@/app/(routes)/dashboard/_components/WorskspaceOptions"
 function WorkspaceItemList({workspaceList,getWorkspaceList}) {
 
   
