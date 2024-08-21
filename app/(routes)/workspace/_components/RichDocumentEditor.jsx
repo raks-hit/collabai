@@ -24,15 +24,21 @@ function RichDocumentEditor({ params }) {
   let editor;
   const { user } = useUser();
   const [documentOutput, setDocumentOutput] = useState([]);
+  const [bool,setBool]=useState(false);
   // const [isFetched,setIsFetched]=useState(false);
   let isFetched=false
   useEffect(() => {
     user && InitEditor();
+   
   }, [user])
+  useEffect(()=>{
+     bool && SaveDocument();
+  },[bool])
 
   /**
    * Used to save Document
    */
+  
   const SaveDocument = () => {
     console.log("UPDATE")
     ref.current.save().then(async (outputData) => {
@@ -114,7 +120,7 @@ function RichDocumentEditor({ params }) {
     <div className=' '>
       <div id='editorjs' className='w-[70%]'></div>
       <div className='fixed bottom-10 md:ml-80 left-0 z-10'>
-        <GenerateAITemplate setGenerateAIOutput={(output)=>editor?.render(output)} />
+        <GenerateAITemplate setGenerateAIOutput={(output)=>editor?.render(output) && setBool(true)} />
       </div>
     </div>
   )
